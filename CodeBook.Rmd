@@ -1,0 +1,39 @@
+---
+title: "Codebook"
+author: "Timo Siegle"
+date: "April 11, 2020"
+output:
+  html_document:
+    toc: true
+    toc_depth: 4
+    toc_float: true
+    code_folding: 'hide'
+    self_contained: true
+    keep_md: true
+    
+  pdf_document:
+    toc: yes
+    toc_depth: 4
+    latex_engine: xelatex
+---
+
+<!-- Here, we're just setting a few options. -->
+
+```{r setup, echo=FALSE}
+ggplot2::theme_set(ggplot2::theme_bw())
+pander::panderOptions("table.split.table", Inf)
+```
+
+<!-- Now, we're preparing our data for the codebook. -->
+
+```{r prepare_codebook, echo=FALSE}
+library(codebook)
+codebook_data <- read.csv("tidyDataSet.txt", sep = " ", header = TRUE)
+```
+
+<!-- Create codebook -->
+The file tidyDtaSet.txt contains a tidy data set with the average of each variable for each activity and each subject.
+```{r codebook, echo=FALSE}
+
+codebook(codebook_data)
+```
